@@ -1,1 +1,3 @@
-data/lattice_gens/*.mfsys
+data\lattice_gens\*.mfsys
+!data\lattice_gens\apamea_gen\unitCellEven.mfsys
+!data\lattice_gens\apamea_gen\!\evenCellEven.mfsys
