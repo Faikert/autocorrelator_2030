@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 def make_system(n: int, m: int, dilute: float = 0, mute=False) -> np.ndarray:
     """
-    Generates a 3D spin ice lattice system.
+    Generates a 2D Kagome lattice system.
 
     Parameters
     ----------
@@ -15,17 +15,17 @@ def make_system(n: int, m: int, dilute: float = 0, mute=False) -> np.ndarray:
         number of cells in the x direction
     m : int
         number of cells in the y direction
-    k : int
-        number of layers in the z direction
-    offset : float
-        layer offset
     dilute : float
         dilution parameter
+    mute : bool
+        whether to mute the output
+
     Returns
     -------
     system : 2D numpy array
         array with the positions and directions of the spins
     """
+
     # 30 degree angle in radians
     cos30 = np.cos(np.pi / 6)
     sin30 = np.sin(np.pi / 6)
