@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import configparser
 
 # Создаем систему и пишем в файл
 # выводим в терминал размеры системы для ini
@@ -83,9 +84,52 @@ def save_to_mfsys(filename, system):
     head = f'[header]\nversion=2\ndimensions=3\ntype=standart\nsize={N}\nemin=0.000000\nemax=0.000000\nstate={"0"*N}\nminstate=\nmaxstate=\ninteractionrange=0\nsizescale=1\nmagnetizationscale=1\n[parts]'
 
     np.savetxt(filename, np.vstack((np.arange(N), system.T, np.array(N*[0]))).T, fmt="%i\t%.15f\t%.15f\t%.15f\t%.15f\t%.15f\t%.15f\t%i", comments="", header=head)
+    print("\n ############# mfsys file created successfully #############\n")
+
+def make_ini(n: int, m: int, k: int, offset: float = 1.48387382444563, temperatures=np.logspace(-1, 1, 20), name='kagome_N1280.ini', steps=10000, r=5.1):
+    '''
+    [main] 
+    file = kagome_N1280.mfsys
+    heatup = 10000
+    calculate = 10000
+    range = 5.1
+    seed = 123
+    temperature = 5e-2, 1e-1, 5e-1, 4.1, 40
+    field = 0|0 ; add external field
+    boundaries = periodic ; open or periodic boundary conditions
+    ; For periodic you have to set size along x and y
+    size = 27.661016949152543|27.661016949152543 ; set rectangle of the lattice to translate it over the space
+    restart = 1 ; restart the program if found lower energy. Default is 1.
+    restartThreshold = 1e-6 ; minimal difference between the initial and lower energy, in relative to initial energy units. Default is 1e-6.
+    saveGS = kagome_gs.mfsys ; if defined, the resulting GS will be saved to this file
+    '''
+    config = configparser.ConfigParser()
+    syssize_x = 2*n
+    syssize_y = 2*m*np.sqrt(3)/2
+    syssize_z = k*offset
+
+    config['main'] = {
+        'file': f'kagome_N{n*m*k*5}.mfsys',
+        'heatup': f'{steps}',
+        'calculate': f'{steps}',
+        'range': f'{r}',
+        'seed': '123',
+        'temperature': ', '.join(map(str, temperatures)),
+        'field': '0|0',
+        'boundaries': 'periodic',
+        'size': f'{syssize_x}|{syssize_y}|{syssize_z}',
+        'restart': '1',
+        'restartThreshold': '1e-6',
+        'saveGS': 'kagome_gs.mfsys'
+    }
+    with open(name, 'w') as f:
+        config.write(f)
+    print("\n ############# ini file created successfully #############\n")
+
 
 if __name__ == "__main__":
-    system = make_system(16, 16, 1, offset=1.48387382444563)
+    system = make_system(6, 6, 6, offset=1.48387382444563)
     save_to_mfsys(f"kagome_N{len(system)}.mfsys", system)
+    make_ini(6, 6, 6, offset=1.48387382444563, temperatures=np.logspace(-1, 1, 50), name=f"kagome_N{len(system)}.ini")
 
-    print(f'sbatch -p amd -N 1 -o "kagome/kagome_N{len(system)}.out" --exclusive -J "n0" start.sh kagome/kagome_N{len(system)}.ini -f kagome/kagome_N{len(system)}.mfsys')
+    print(f'sbatch -p amd -N 1 -o "kagome/kagome_N{len(system)}.out" --exclusive -J "n0" start.sh kagome/kagome_N{len(system)}.ini -f kagome/kagome_N{len(system)}.mfsys --save 10')

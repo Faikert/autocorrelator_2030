@@ -1,5 +1,32 @@
 import math
 import numpy as np
+import configparser
+
+
+def make_ini(n: int, m: int, delta: float, temperatures=np.logspace(-1, 1, 20), name='cairo.ini', steps=10000, r=5.1):
+    config = configparser.ConfigParser()
+    syssize_x = n*delta
+    syssize_y = m*delta
+
+    config['main'] = {
+        'file': f'cairo_N{n*n*5}.mfsys',
+        'heatup': f'{steps}',
+        'calculate': f'{steps}',
+        'range': f'{r}',
+        'seed': '123',
+        'temperature': ', '.join(map(str, temperatures)),
+        'field': '0|0',
+        'boundaries': 'periodic',
+        'size': f'{syssize_x}|{syssize_y}',
+        'restart': '1',
+        'restartThreshold': '1e-6',
+        'saveGS': 'cairo_gs.mfsys'
+    }
+    with open(name, 'w') as f:
+        config.write(f)
+    print("\n ############# ini file created successfully #############\n")
+
+
 
 def main():
     sin60 = math.sin(math.pi / 3)
@@ -85,6 +112,7 @@ def main():
     y = np.array(vy, dtype=np.float32)
     mx = np.array(vmx, dtype=np.float32)
     my = np.array(vmy, dtype=np.float32)
+    make_ini(n, m, delta, temperatures=np.logspace(-2, 2, 50), name=f'cairo_N{n*n*5}.ini', steps=10000, r=5.1)
     
     # TODO: Complete E and M computing
     # Матрица e будет размером N x N
