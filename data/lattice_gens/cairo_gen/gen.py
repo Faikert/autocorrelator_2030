@@ -113,6 +113,7 @@ def main():
     mx = np.array(vmx, dtype=np.float32)
     my = np.array(vmy, dtype=np.float32)
     make_ini(n, m, delta, temperatures=np.logspace(-2, 2, 50), name=f'cairo_N{n*n*5}.ini', steps=10000, r=5.1)
+    print(f'sbatch -p common -N 1 -o "cairo/cairo_N{n*n*5}.out" --exclusive -J "n0" start.sh cairo/cairo_N{n*n*5}.ini -f cairo/cairo_N{n*n*5}.mfsys --save 10')
     
     # TODO: Complete E and M computing
     # Матрица e будет размером N x N

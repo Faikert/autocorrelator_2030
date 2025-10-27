@@ -16,17 +16,17 @@ def make_lattice(n):
 
     lattice = np.array([[i for i in range(lattice.shape[0])], *lattice.T, [0 for i in range(lattice.shape[0])]]).T
 
-    np.savetxt(f'3d_square_N{lattice.shape[0]}.mfsys', lattice, header=head, comments='', fmt='%d %05.5f %05.5f %05.5f %05.5f %05.5f %05.5f %d')
+    np.savetxt(f'3d_cube_N{lattice.shape[0]}.mfsys', lattice, header=head, comments='', fmt='%d %05.5f %05.5f %05.5f %05.5f %05.5f %05.5f %d')
     return lattice
 
-def make_ini(n: int, temperatures=np.logspace(-1, 1, 20), name='3d_square.ini', steps=10000, r=5.1):
+def make_ini(n: int, temperatures=np.logspace(-1, 1, 20), name='3d_cube.ini', steps=10000, r=5.1):
     config = configparser.ConfigParser()
     syssize_x = 2*n
     syssize_y = 2*n
     syssize_z = 2*n
 
     config['main'] = {
-        'file': f'3d_square_N{n*n*n*3}.mfsys',
+        'file': f'3d_cube_N{n*n*n*3}.mfsys',
         'heatup': f'{steps}',
         'calculate': f'{steps}',
         'range': f'{r}',
@@ -37,7 +37,7 @@ def make_ini(n: int, temperatures=np.logspace(-1, 1, 20), name='3d_square.ini', 
         'size': f'{syssize_x}|{syssize_y}|{syssize_z}',
         'restart': '1',
         'restartThreshold': '1e-6',
-        'saveGS': '3d_square_gs.mfsys'
+        'saveGS': '3d_cube_gs.mfsys'
     }
     with open(name, 'w') as f:
         config.write(f)
@@ -48,5 +48,6 @@ def make_ini(n: int, temperatures=np.logspace(-1, 1, 20), name='3d_square.ini', 
 if __name__ == '__main__':
     n = int(sys.argv[1])
     system = make_lattice(n)
-    make_ini(n, temperatures=np.logspace(-2, 2, 50), name=f'3d_square_N{len(system)}.ini')
-    print(f'sbatch -p amd -N 1 -o "3d_square/3d_square_N{len(system)}.out" --exclusive -J "n0" start.sh 3d_square/3d_square_N{len(system)}.ini -f 3d_square/3d_square_N{len(system)}.mfsys --save 10')
+    
+    make_ini(n, temperatures=np.logspace(-2, 2, 50), name=f'3d_cube_N{len(system)}.ini')
+    print(f'sbatch -p amd -N 1 -o "3d_cube/3d_cube_N{len(system)}.out" --exclusive -J "n0" start.sh 3d_cube/3d_cube_N{len(system)}.ini -f 3d_cube/3d_cube_N{len(system)}.mfsys --save 10')
