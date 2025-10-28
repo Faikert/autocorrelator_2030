@@ -1,0 +1,459 @@
+\documentclass[10pt]{article}
+\usepackage{femj_ru}
+
+%% Перед отправкой в журнал:
+% 1. Перевести файл в кодировку windows-1251
+% 2. в файле femj_ru.sty поменять \RequirePackage[utf8]{inputenc} на \RequirePackage[cp1251]{inputenc}
+% 3. в файле femj_ru.sty удалить строку 10 \RequirePackage{soulutf8}
+
+%Глубокоуважаемые авторы!
+
+% прежде чем подключать дополнительные пакеты TeXa и создавать новые окружения, пожалуйста, ознакомьтесь с уже предусмотренными в стилевом файле журнала
+
+% Используемые пакеты  перечислены в файле femj_ru.sty строки 7-30
+% Обозначения окружений журнала и дополнительные команды приведены в стилевом файле femj_ru.sty строки 38-80
+
+\begin{document}
+
+\Pages(0--0)
+
+\def\Im{\mathop{\mathrm{Im}}\nolimits}
+
+\summary Strongin~V.\,S.$^1,2$\!, Shevchenko~Y.\,A.$^{1, 2}$\author
+
+Autocorrelation\title
+
+abstract
+\keywords{cubic spin ice, Metropolis algorithm, statistical thermodynamics.}
+\org{$^1$ Institute for Applied Mathematics, Far Eastern Branch, Russian Academy of Sciences\\ 
+$^2$ Department of theoretical physics, Far eastern federal university, Russia}
+\references{ %транслитерированный список литературы
+
+\begin{thebibliography}{4}
+\setlength{\parsep}{0pt}\setlength{\itemsep}{3pt}
+
+\bibitem{skjaervo2020advances}
+\by S.H.~Skjærvø, C.H.~Marrows, R.L.~Stamps et al.
+\jour Nature Reviews Physics
+\paper Advances in artificial spin ice
+\vol 2
+\pages 13-28
+\yr 2020
+
+\bibitem{shevchenko2017}
+\by Y. Shevchenko, A. Makarov, K. Nefedev
+\jour Physics Letters A
+\paper Effect of long-and short-range interactions on the thermodynamics of dipolar spin ice
+\vol 381
+\issue 5
+\pages 428-434
+\yr 2017
+
+\bibitem{Morrison2013}
+\paper Unhappy vertices in artificial spin ice: new degeneracies from vertex frustration
+\by M.J.~Morrison, T.R.~Nelson, C.~Nisoli
+\jour New Journal of Physics
+\vol 15
+\number 4
+\pages 045009
+\yr 2013
+
+\bibitem{May2021}
+\paper Xbp1s-FoxO1 axis governs lipid accumulation and contractile performance in heart failure with preserved ejection fraction
+\by S. Dasgupta, X. Wang, KM. French, E. Villalobos, S.B. Spurgin, M. Waldman, N. Jiang, H.I. May
+\jour Nature communications
+\vol 12
+\pages 1684
+\number 1
+\yr 2021
+
+\bibitem{Sahoo2021}
+\paper Observation of coherent spin waves in a three-dimensional artificial spin ice structure
+\by S. Sahoo, A. May, A. van Den Berg, A.K. Mondal et al.
+\jour Nano Letters
+\vol 21
+\pages 4629-4635
+\number 11
+\yr 2021
+
+\bibitem{Sahoo2018}
+\by S. Sahoo, S. Mondal, G. Williams, A. May, S. Ladak, A. Barman
+\paper  Ultrafast magnetization dynamics in a nanoscale three-dimensional cobalt tetrapod structure
+\jour Nanoscale
+\vol 10
+\number 21
+\pages 9981-9986
+\yr 2018
+
+\bibitem{Keller2018}
+\paper Direct-write of free-form building blocks for artificial magnetic 3D lattices
+\by L. Keller, M. Al Mamoori, J. Pieper, C. Gspan, I. Stockem, C. Schr{\"o}der, S. Barth, R. Winkler, H. Plank, M. Pohlit et al.
+\jour Scientific reports
+\vol 8
+\pages 6160
+\number 1
+\yr 2018
+
+\bibitem{Koraltan2021}
+\paper Tension-free Dirac strings and steered magnetic charges in 3D artificial spin ice
+\by S. Koraltan, F. Slanovc, F. Bruckner, C. Nisoli, A. Chumak, O. Dobrovolskiy, C. Abert, D. Suess
+\jour npj Computational Materials
+\vol 7
+\number 1
+\pages 125
+\yr 2021
+
+\bibitem{shevchenko2022}
+\by Y. Shevchenko, V. Strongin, V. Kapitan, K. Soldatov, A. Makarov, M. Padalko, R. Volotovskii, K. Nefedev
+\jour Physical Review E
+\vol 106
+\number 6
+\pages 064105
+\paper Order and disorder, crossovers, and phase transitions in dipolar artificial spin ice on the Cairo lattice
+\yr 2022
+
+\RBibitem{KapVasShe20}
+\by V.~Ju.~Kapitan, E.~V.~Vasil'ev, Ju.~A.~Shevchenko, A.~V.~Perzhu, D.~Ju.~Kapitan, A.~E.~Rybin, K.~S.~Soldatov, A.~G.~Makarov, R.~A.~Volotovskij, K.~V.~Nefedev
+\paper Termodinamicheskie svojstva sistem spinov Gejzenberga na kvadratnoj reshetke s vzaimodejstviem Dzjaloshinskogo\,--\,Morija
+\jour Dal'nevost. matem. zhurn.
+\yr 2020
+\vol 20
+\issue 1
+\pages 63--73
+\mathnet{http://mi.mathnet.ru/dvmg420}
+\crossref{https://doi.org/10.47910/FEMJ202007}
+
+\bibitem{wang2006}
+\paper Artificial ``spin ice'' in a geometrically frustrated lattice of nanoscale ferromagnetic islands
+\by R.F. Wang, C. Nisoli, R.S. Freitas, J. Li, W. McConville, B.J. Cooley, M.S. Lund, N. Samarth, C. Leighton, V.H. Crespi
+\jour Nature
+\vol 439
+\number 7074
+\pages 303-306
+\yr 2006
+
+\bibitem{StonerWohlfarth1948}
+\paper A mechanism of magnetic hysteresis in heterogeneous alloys
+\by E.C.~Stoner, E.P.~Wohlfarth
+\jour Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences
+\vol 240
+\number 826
+\pages 559-642
+\yr 1948
+
+\bibitem{Metropolis1953}
+\paper Equation of state calculations by fast computing machines
+\by N.~Metropolis, A.W.~Rosenbluth, M.N.~Rosenbluth et al.
+\jour The journal of chemical physics
+\vol 21
+\number 6
+\pages 1087--1092
+\yr 1953
+
+\bibitem{Hastings1970}
+\paper Monte Carlo sampling methods using Markov chains and their application
+\by W.K.~Hastings
+\jour Biometrika
+\vol 57
+\pages 97-109
+\yr 1970
+
+\bibitem{Makarova2023}
+\paper Canonical Monte Carlo multispin cluster method
+\by K.~Makarova, A.~Makarov, V.~Strongin et al.
+\jour Journal of Computational and Applied Mathematics
+\vol 427
+\pages 115153
+\yr 2023
+
+\RBibitem{MakMakPad20}
+\by K.~V.~Makarova, A.~G.~Makarov, M.~A.~Padalko, V.~S.~Strongin, K.~V.~Nefedev
+\paper Mul'tispinovyj Monte-Karlo metod
+\jour Dal'nevost. matem. zhurn.
+\yr 2020
+\vol 20
+\issue 2
+\pages 212--220
+\mathnet{http://mi.mathnet.ru/dvmg433}
+\crossref{https://doi.org/10.47910/FEMJ202020}
+
+\bibitem{le1980critical}
+\paper Critical exponents from field theory
+\by J.C. Le Guillou, J. Zinn-Justin
+\jour Physical Review B
+\vol 21
+\number 9
+\pages 3976
+\yr 1980
+
+\bibitem{Vaz2008}
+\by C.~A.~F.~Vaz, J.~A.~C.~Bland, G.~Lauhoff
+\jour Reports on Progress in Physics
+\paper Magnetism in ultrathin film structures
+\yr 2008
+\number 5
+\pages 056501
+\vol 71
+
+\bibitem{Aharony1998}
+\paper Critical disordered systems with constraints and the inequality $\nu$> 2/d
+\by A. Aharony, A. B. Harris, and S. Wiseman
+\jour Phys. Rev. Lett.
+\vol 81
+\number 2
+\pages 252
+\yr 1998
+
+\bibitem{Marques1999}
+\paper Self-averaging of random and thermally disordered diluted Ising systems
+\by M. I. Marqués and J. A. Gonzalo
+\jour Phys. Rev. E
+\vol 60
+\pages 2394
+\number 2
+\yr 1999
+
+\end{thebibliography}
+}
+
+\UDC{511.21+517.965+517.547.582}
+\AMS{11B37 + 33E05}
+
+\SupportedBy{Статья выполнена в рамках проекта № АСП-25-03-1.03-0029 по программе развития ДВФУ в рамках программы стратегического академического лидерства «Приоритет-2030», \linebreak 
+Представленные в работе результаты были получены на суперкомпьютерном вычислительном кластере Института прикладной математики ДВО РАН.
+}
+
+\submitted{30 ноября 2023 г.}
+
+\title{Автокорреляции спиновых моделей}
+
+\author[1,2]{В.\,С.~Стронгин}{Департамент теоретической физики и интеллектуальных технологий, Институт наукоемких технологий и передовых материалов, Дальневосточный федеральный университет. 690922, Россия, г. Владивосток, о. Русский, п. Аякс, 10}{strongin.vs@dvfu.ru}
+\author[1,2]{Ю.\,А.~Шевченко}{Институт прикладной математики, Дальневосточное отделение Российской академии наук. 690041, Россия, г. Владивосток, Ул. Радио д. 7}{}
+
+
+
+
+\makeface
+
+%\markright {Разбавленная модель кубического спинового льда ...} %Добавляем, если длинное название статьи
+%\markleft{В.\,С. Стронгин, П.\,А. Овчинников, Э.\,А.~Лобанова, ...} %добавляем, если много авторов
+
+
+\abstract Методом Метрополиса в системе Изинг-подобных точечных диполей, расположенных на ребрах простой кубической решетки, получено температурное поведение теплоемкости, намагниченности и магнитной восприимчивости в модели, учитывающей только ближние диполь-дипольные взаимодействия, а также модели с ограниченным дальним радиусом взаимодействия. В системе присутствуют три термодинамические магнитные фазы: дальний порядок, ближний порядок и беспорядок. Фаза дальнего порядка в модели ближайших соседей отсутствует. Фаза ближнего порядка характеризуется высоким уровнем энтропии, наведенной геометрией решетки. Внешнее магнитное поле вдоль одной из базисных осей приводит к конкуренции параметров порядка в модели с ограниченным дальним радиусом взаимодействия и к исчезновению остаточной энтропии в модели учитывающей только ближние взаимодействия. Показана нелинейная зависимость критической температуры теплоемкости от концентрации разбавления системы немагнитными вакансиями в модели с ближними взаимодействиями.
+
+\keywords{кубический спиновый лед, алгоритм Метрополиса, статистическая термодинамика.}
+
+\DOI{to be presented}
+
+\section*{Введение}
+
+0
+
+\section{Математическая модель} 
+1
+
+\section {Теплоемкость кубического спинового льда}
+
+2
+
+\section{Случайное разбавление магнитной решетки}
+
+3
+
+
+\section{Заключение}
+
+4
+
+%\vspace{15mm}
+
+\begin{thebibliography}{20}
+\setlength{\parsep}{0pt}\setlength{\itemsep}{3pt}
+
+\bibitem{skjaervo2020advances}
+\by S.H.~Skjærvø, C.H.~Marrows, R.L.~Stamps et al.
+\jour Nature Reviews Physics
+\paper Advances in artificial spin ice
+\vol 2
+\pages 13-28
+\yr 2020
+
+\bibitem{shevchenko2017}
+\by Y. Shevchenko, A. Makarov, K. Nefedev
+\jour Physics Letters A
+\paper Effect of long-and short-range interactions on the thermodynamics of dipolar spin ice
+\vol 381
+\issue 5
+\pages 428-434
+\yr 2017
+
+\bibitem{Morrison2013}
+\paper Unhappy vertices in artificial spin ice: new degeneracies from vertex frustration
+\by M.J.~Morrison, T.R.~Nelson, C.~Nisoli
+\jour New Journal of Physics
+\vol 15
+\number 4
+\pages 045009
+\yr 2013
+
+\bibitem{May2021}
+\paper Xbp1s-FoxO1 axis governs lipid accumulation and contractile performance in heart failure with preserved ejection fraction
+\by S. Dasgupta, X. Wang, KM. French, E. Villalobos, S.B. Spurgin, M. Waldman, N. Jiang, H.I. May
+\jour Nature communications
+\vol 12
+\pages 1684
+\number 1
+\yr 2021
+
+\bibitem{Sahoo2021}
+\paper Observation of coherent spin waves in a three-dimensional artificial spin ice structure
+\by S. Sahoo, A. May, A. van Den Berg, A.K. Mondal et al.
+\jour Nano Letters
+\vol 21
+\pages 4629-4635
+\number 11
+\yr 2021
+
+\bibitem{Sahoo2018}
+\by S. Sahoo, S. Mondal, G. Williams, A. May, S. Ladak, A. Barman
+\paper  Ultrafast magnetization dynamics in a nanoscale three-dimensional cobalt tetrapod structure
+\jour Nanoscale
+\vol 10
+\number 21
+\pages 9981-9986
+\yr 2018
+
+\bibitem{Keller2018}
+\paper Direct-write of free-form building blocks for artificial magnetic 3D lattices
+\by L. Keller, M. Al Mamoori, J. Pieper, C. Gspan, I. Stockem, C. Schr{\"o}der, S. Barth, R. Winkler, H. Plank, M. Pohlit et al.
+\jour Scientific reports
+\vol 8
+\pages 6160
+\number 1
+\yr 2018
+
+\bibitem{Koraltan2021}
+\paper Tension-free Dirac strings and steered magnetic charges in 3D artificial spin ice
+\by S. Koraltan, F. Slanovc, F. Bruckner, C. Nisoli, A. Chumak, O. Dobrovolskiy, C. Abert, D. Suess
+\jour npj Computational Materials
+\vol 7
+\number 1
+\pages 125
+\yr 2021
+
+\bibitem{shevchenko2022}
+\by Y. Shevchenko, V. Strongin, V. Kapitan, K. Soldatov, A. Makarov, M. Padalko, R. Volotovskii, K. Nefedev
+\jour Physical Review E
+\vol 106
+\number 6
+\pages 064105
+\paper Order and disorder, crossovers, and phase transitions in dipolar artificial spin ice on the Cairo lattice
+\yr 2022
+
+\RBibitem{KapVasShe20}
+\by В.~Ю.~Капитан, Е.~В.~Васильев, Ю.~А.~Шевченко, А.~В.~Пержу, Д.~Ю.~Капитан, А.~Е.~Рыбин, К.~С.~Солдатов, А.~Г.~Макаров, Р.~А.~Волотовский, К.~В.~Нефедев
+\paper Термодинамические свойства систем спинов Гейзенберга на квадратной решетке с взаимодействием Дзялошинского\,--\,Мория
+\jour Дальневост. матем. журн.
+\yr 2020
+\vol 20
+\issue 1
+\pages 63--73
+\mathnet{http://mi.mathnet.ru/dvmg420}
+\crossref{https://doi.org/10.47910/FEMJ202007}
+
+\bibitem{wang2006}
+\paper Artificial ``spin ice'' in a geometrically frustrated lattice of nanoscale ferromagnetic islands
+\by R.F. Wang, C. Nisoli, R.S. Freitas, J. Li, W. McConville, B.J. Cooley, M.S. Lund, N. Samarth, C. Leighton, V.H. Crespi
+\jour Nature
+\vol 439
+\number 7074
+\pages 303-306
+\yr 2006
+
+\bibitem{StonerWohlfarth1948}
+\paper A mechanism of magnetic hysteresis in heterogeneous alloys
+\by E.C.~Stoner, E.P.~Wohlfarth
+\jour Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences
+\vol 240
+\number 826
+\pages 559-642
+\yr 1948
+
+\bibitem{Metropolis1953}
+\paper Equation of state calculations by fast computing machines
+\by N.~Metropolis, A.W.~Rosenbluth, M.N.~Rosenbluth et al.
+\jour The journal of chemical physics
+\vol 21
+\number 6
+\pages 1087--1092
+\yr 1953
+
+\bibitem{Hastings1970}
+\paper Monte Carlo sampling methods using Markov chains and their application
+\by W.K.~Hastings
+\jour Biometrika
+\vol 57
+\pages 97-109
+\yr 1970
+
+\bibitem{Makarova2023}
+\paper Canonical Monte Carlo multispin cluster method
+\by K.~Makarova, A.~Makarov, V.~Strongin et al.
+\jour Journal of Computational and Applied Mathematics
+\vol 427
+\pages 115153
+\yr 2023
+
+\RBibitem{MakMakPad20}
+\by К.~В.~Макарова, А.~Г.~Макаров, М.~А.~Падалко, В.~С.~Стронгин, К.~В.~Нефедев
+\paper Мультиспиновый Монте-Карло метод
+\jour Дальневост. матем. журн.
+\yr 2020
+\vol 20
+\issue 2
+\pages 212--220
+\mathnet{http://mi.mathnet.ru/dvmg433}
+\crossref{https://doi.org/10.47910/FEMJ202020}
+
+\bibitem{le1980critical}
+\paper Critical exponents from field theory
+\by J.C. Le Guillou, J. Zinn-Justin
+\jour Physical Review B
+\vol 21
+\number 9
+\pages 3976
+\yr 1980
+
+\bibitem{Vaz2008}
+\by C.~A.~F.~Vaz, J.~A.~C.~Bland, G.~Lauhoff
+\jour Reports on Progress in Physics
+\paper Magnetism in ultrathin film structures
+\yr 2008
+\number 5
+\pages 056501
+\vol 71
+
+\bibitem{Aharony1998}
+\paper Critical disordered systems with constraints and the inequality $\nu$> 2/d
+\by A. Aharony, A. B. Harris, and S. Wiseman
+\jour Phys. Rev. Lett.
+\vol 81
+\number 2
+\pages 252
+\yr 1998
+
+\bibitem{Marques1999}
+\paper Self-averaging of random and thermally disordered diluted Ising systems
+\by M. I. Marqués and J. A. Gonzalo
+\jour Phys. Rev. E
+\vol 60
+\pages 2394
+\number 2
+\yr 1999
+
+\end{thebibliography}
+
+
+
+\EndArticle
+\end{document} 

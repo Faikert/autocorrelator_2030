@@ -2,3 +2,5 @@ data/**/*.mfsys
 *.ini
 !data\lattice_gens\apamea_gen\unitCellEven.mfsys
 !data\lattice_gens\apamea_gen\!\evenCellEven.mfsys
+main*
+!main.tex
